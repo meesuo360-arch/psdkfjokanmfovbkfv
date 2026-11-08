@@ -179,6 +179,52 @@
             border-radius: 2px;
         }
 
+        /* إحصائيات الإنجاز الجديدة (Stats Counter) */
+        .stats-section {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 60px 8%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .stat-box i {
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-box h3 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
         /* من نحن */
         .about-grid {
             display: grid;
@@ -224,6 +270,56 @@
         .about-card ul li i {
             color: var(--accent-color);
             font-size: 22px;
+        }
+
+        /* رحلة العمل / كيف نعمل (How We Work) */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .workflow-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 35px 25px;
+            border-radius: 16px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .workflow-box:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #07090f;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .workflow-box h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        .workflow-box p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         /* خدماتنا ومجالاتنا الاحترافية */
@@ -330,9 +426,79 @@
             border: 1px solid var(--border-color);
         }
 
-        /* قسم وسائل التواصل والانضمام (في نهاية الموقع كما طلبت تحديداً) */
-        .contact-section {
+        /* قسم آراء العملاء الجديدة (Testimonials) */
+        .testimonials {
             background-color: var(--bg-secondary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .testimonial-card i.fa-quote-right {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 40px;
+            color: rgba(245, 158, 11, 0.1);
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .client-info h4 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .client-info span {
+            color: var(--accent-color);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* زر التواصل العائم السريع (Floating Widget) */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .floating-contact:hover {
+            transform: scale(1.1);
+        }
+
+        /* قسم وسائل التواصل والانضمام (في نهاية الموقع تماماً كما طلبت تحديداً) */
+        .contact-section {
+            background-color: var(--bg-primary);
             border-top: 1px solid var(--border-color);
             text-align: center;
         }
@@ -413,6 +579,11 @@
 </head>
 <body>
 
+    <!-- زر الواتساب العائم السريع -->
+    <a href="https://wa.me/" target="_blank" class="floating-contact" title="تواصل معنا عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <!-- شريط التنقل العلوي -->
     <header>
         <div class="logo">تيم <span>السعودي</span></div>
@@ -422,6 +593,7 @@
                 <li><a href="#about">عن التيم</a></li>
                 <li><a href="#services">خدماتنا</a></li>
                 <li><a href="#projects">مشاريعنا</a></li>
+                <li><a href="#testimonials">آراء العملاء</a></li>
                 <li><a href="#contact">تواصل معنا</a></li>
             </ul>
         </nav>
@@ -436,6 +608,32 @@
             <a href="#services" class="btn-main">استكشف خدماتنا الآن</a>
         </div>
     </section>
+
+    <!-- قسم إحصائيات الإنجاز (Stats Counter) -->
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <i class="fa-solid fa-store"></i>
+                <h3>+50</h3>
+                <p>كافيه ومطعم تم تطوير منصاتهم</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-code"></i>
+                <h3>+120</h3>
+                <p>مشروع وبوت ديسكورد مُنجز</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-users"></i>
+                <h3>100%</h3>
+                <p>نسبة رضا العملاء</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-headset"></i>
+                <h3>24/7</h3>
+                <p>دعم فني واستقرار تام</p>
+            </div>
+        </div>
+    </div>
 
     <!-- قسم من نحن -->
     <section id="about">
@@ -453,6 +651,33 @@
                     <li><i class="fa-solid fa-circle-check"></i> حماية متقدمة وأداء عالي الاستقرار</li>
                     <li><i class="fa-solid fa-circle-check"></i> دعم فني مستمر وتطوير دوري للمشاريع</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم رحلة العمل / كيف نعمل (How We Work) -->
+    <section style="background-color: var(--bg-secondary);">
+        <h2 class="section-title">رحلة العمل معنا</h2>
+        <div class="workflow-grid">
+            <div class="workflow-box">
+                <div class="step-number">1</div>
+                <h4>دراسة الفكرة</h4>
+                <p>نستمع جيداً لمتطلبات مشروعك، سواء كان كافيه، مطعم، أو سيستم خاص لنضع الخطة الأنسب.</p>
+            </div>
+            <div class="workflow-box">
+                <div class="step-number">2</div>
+                <h4>التصميم المعماري</h4>
+                <p>نصمم الواجهات والهيكلية البرمجية بدقة تامة لتوفير تجربة مستخدم سريعة وخاطفة للأنظار.</p>
+            </div>
+            <div class="workflow-box">
+                <div class="step-number">3</div>
+                <h4>التطوير والبرمجة</h4>
+                <p>نبني الأكواد ونربط الأنظمة والأنظمة السحابية بأعلى معايير الأمان والكفاءة العالية.</p>
+            </div>
+            <div class="workflow-box">
+                <div class="step-number">4</div>
+                <h4>الإطلاق والدعم</h4>
+                <p>نطلق المشروع رسمياً ونقدم لك الدعم الفني المستمر لضمان استقرار العمل بنجاح تام.</p>
             </div>
         </div>
     </section>
@@ -515,7 +740,38 @@
         </div>
     </section>
 
-    <!-- قسم وسائل التواصل والانضمام (في نهاية الموقع تماماً كما طلبت) -->
+    <!-- قسم آراء العملاء (Testimonials) الجديد -->
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">آراء عملائنا وشركاء النجاح</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <i class="fa-solid fa-quote-right"></i>
+                <p>"تعاملنا مع تيم السعودي لتطوير موقع المنيو ونظام الطلبات للكافيه، النتيجة كانت مبهرة وسرعة التنفيذ فوق العادة. شكراً على الاحترافية العالية!"</p>
+                <div class="client-info">
+                    <h4>عبدالله الشمري</h4>
+                    <span>صاحب سلسلة مقاهي</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fa-solid fa-quote-right"></i>
+                <p>"أفضل فريق برمجيات تعاملت معه، أنظمة إدارة المخازن والسيستم شغال بكفاءة عالية بدون أي مشاكل، والدعم الفني دايماً متواجد."</p>
+                <div class="client-info">
+                    <h4>محمد القحطاني</h4>
+                    <span>مدير تنفيذي لشركة تقنية</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fa-solid fa-quote-right"></i>
+                <p>"طلبت منهم بوت ديسكورد متكامل لإدارة سيرفر الجيمنج الخاص بنا، الصراحة إبداع في البرمجة وسرعة رد لا توصف. أنصح بالتعامل معهم بقوة."</p>
+                <div class="client-info">
+                    <h4>سلطان الفهد</h4>
+                    <span>مؤسس مجتمع ألعاب</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم وسائل التواصل والانضمام (في نهاية الموقع تماماً كما طلبت تحديداً) -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">تواصل معنا وانضم إلينا</h2>
         <div class="contact-container">
