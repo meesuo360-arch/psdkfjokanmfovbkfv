@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
   <!-- مكتبة الأيقونات Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- مكتبة الأนิเมشن AOS (Animate On Scroll) -->
+  <!-- مكتبة الأنيميشن AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -17,11 +17,17 @@
       --bg-primary: #07090f;
       --bg-secondary: #0d1322;
       --bg-card: #151d30;
-      --accent-color: #f59e0b;
+      --accent-color: #f59e0b; /* ذهبي/برتقالي ناري فخم */
       --accent-glow: rgba(245, 158, 11, 0.35);
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
       --border-color: #1e293b;
+    }
+
+    /* تفعيل السناب السلس لضبط حركة السكاشن */
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
     }
 
     * {
@@ -29,7 +35,6 @@
       margin: 0;
       padding: 0;
       font-family: 'Tajawal', sans-serif;
-      scroll-behavior: smooth;
     }
 
     body {
@@ -116,6 +121,8 @@
       font-weight: 700;
       text-decoration: none;
       transition: 0.3s;
+      cursor: pointer;
+      border: none;
     }
 
     .cta-nav:hover {
@@ -123,20 +130,35 @@
       transform: translateY(-2px);
     }
 
-    /* الواجهة الرئيسية (Hero Section) */
-    .hero {
+    /* ضبط تثبيت كل سكشن (Scroll Snap Align) */
+    section, .hero, .stats-section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      padding: 110px 8%;
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      position: relative;
+    }
+
+    .stats-section {
+      min-height: auto;
+      padding: 60px 8%;
+      background-color: rgba(13, 19, 34, 0.7);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero {
+      background: radial-gradient(circle at center, rgba(21, 29, 48, 0.6) 0%, rgba(7, 9, 15, 0.95) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
     }
 
     .hero-content {
       max-width: 850px;
       z-index: 2;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .hero h1 {
@@ -185,14 +207,11 @@
       filter: brightness(1.1);
     }
 
-    /* أقسام الموقع العامة */
-    section { padding: 110px 8%; }
-
     .section-title {
       text-align: center;
       font-size: 38px;
       font-weight: 900;
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       color: #ffffff;
       position: relative;
     }
@@ -209,15 +228,7 @@
       border-radius: 2px;
     }
 
-    /* قسم الإحصائيات (Stats Counter) */
-    .stats-section {
-      background-color: rgba(13, 19, 34, 0.7);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      padding: 60px 8%;
-    }
-
+    /* الإحصائيات */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -301,7 +312,7 @@
       font-size: 22px;
     }
 
-    /* رحلة العمل / كيف نعمل */
+    /* رحلة العمل */
     .workflow-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -351,7 +362,7 @@
       line-height: 1.6;
     }
 
-    /* خدماتنا مع تأثير 3D Tilt */
+    /* خدماتنا مع 3D Tilt */
     .services { background-color: rgba(13, 19, 34, 0.6); }
 
     .services-grid {
@@ -382,9 +393,7 @@
       transition: transform 0.3s;
     }
 
-    .service-box:hover i {
-      transform: translateZ(30px) scale(1.1);
-    }
+    .service-box:hover i { transform: translateZ(30px) scale(1.1); }
 
     .service-box h4 {
       font-size: 22px;
@@ -423,32 +432,27 @@
     }
 
     .project-img {
-      height: 200px;
+      height: 180px;
       background: linear-gradient(135deg, #151d30 0%, #0d1322 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent-color);
-      font-size: 55px;
-      transition: transform 0.5s;
+      font-size: 50px;
     }
 
-    .project-card:hover .project-img i {
-      transform: scale(1.2) rotate(5deg);
-    }
-
-    .project-body { padding: 30px; }
+    .project-body { padding: 25px; }
 
     .project-body h4 {
-      font-size: 22px;
-      margin-bottom: 12px;
+      font-size: 20px;
+      margin-bottom: 10px;
       color: #ffffff;
     }
 
     .project-body p {
       color: var(--text-muted);
-      font-size: 15px;
-      margin-bottom: 20px;
+      font-size: 14px;
+      margin-bottom: 15px;
       line-height: 1.6;
     }
 
@@ -456,9 +460,9 @@
       display: inline-block;
       background-color: var(--bg-primary);
       color: var(--accent-color);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 6px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       border: 1px solid var(--border-color);
     }
@@ -475,7 +479,7 @@
     .testimonial-card {
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
-      padding: 35px;
+      padding: 30px;
       border-radius: 16px;
       position: relative;
     }
@@ -484,30 +488,30 @@
       position: absolute;
       top: 20px;
       left: 25px;
-      font-size: 40px;
+      font-size: 35px;
       color: rgba(245, 158, 11, 0.1);
     }
 
     .testimonial-card p {
       color: var(--text-muted);
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .client-info h4 {
       color: #ffffff;
-      font-size: 18px;
-      margin-bottom: 3px;
+      font-size: 16px;
+      margin-bottom: 2px;
     }
 
     .client-info span {
       color: var(--accent-color);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
     }
 
-    /* زر التواصل العائم السريع */
+    /* زر الواتساب العائم */
     .floating-contact {
       position: fixed;
       bottom: 30px;
@@ -543,8 +547,8 @@
 
     .contact-container p {
       color: var(--text-muted);
-      margin-bottom: 40px;
-      font-size: 17px;
+      margin-bottom: 35px;
+      font-size: 16px;
       line-height: 1.8;
     }
 
@@ -578,13 +582,141 @@
       transform: translateY(-3px);
     }
 
+    /* تصميم النافذة الانبثاقية الاحترافية (Modal Popup) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(4, 6, 12, 0.85);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: linear-gradient(145deg, var(--bg-card), var(--bg-secondary));
+      border: 1px solid var(--accent-color);
+      box-shadow: 0 0 35px var(--accent-glow);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 480px;
+      padding: 35px 25px;
+      text-align: center;
+      position: relative;
+      transform: scale(0.7);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-modal-btn:hover {
+      color: var(--accent-color);
+      transform: rotate(90deg);
+    }
+
+    .modal-box h3 {
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+
+    .modal-box p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    .modal-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .modal-opt-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      color: #ffffff;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .modal-opt-btn.discord {
+      background: rgba(88, 101, 242, 0.15);
+      border-color: #5865F2;
+    }
+
+    .modal-opt-btn.discord:hover {
+      background: #5865F2;
+      box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .modal-opt-btn.whatsapp {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: #25D366;
+    }
+
+    .modal-opt-btn.whatsapp:hover {
+      background: #25D366;
+      color: #07090f;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .modal-opt-btn.gmail {
+      background: rgba(234, 67, 53, 0.15);
+      border-color: #EA4335;
+    }
+
+    .modal-opt-btn.gmail:hover {
+      background: #EA4335;
+      box-shadow: 0 0 20px rgba(234, 67, 53, 0.5);
+      transform: translateY(-2px);
+    }
+
     footer {
       background-color: #040508;
       border-top: 1px solid var(--border-color);
-      padding: 35px 8%;
+      padding: 30px 8%;
       text-align: center;
       color: var(--text-muted);
-      font-size: 15px;
+      font-size: 14px;
+      scroll-snap-align: end;
+      min-height: auto;
     }
 
     footer span {
@@ -594,9 +726,9 @@
 
     @media (max-width: 768px) {
       nav ul { display: none; }
-      .hero h1 { font-size: 34px; }
+      .hero h1 { font-size: 32px; }
       .about-grid { grid-template-columns: 1fr; }
-      section { padding: 80px 5%; }
+      section { padding: 80px 5%; min-height: auto; }
       .cursor-glow { display: none; }
     }
   </style>
@@ -627,7 +759,7 @@
         <li><a href="#contact">تواصل معنا</a></li>
       </ul>
     </nav>
-    <a href="#contact" class="cta-nav">انضم إلينا</a>
+    <button class="cta-nav" onclick="openModal()">انضم إلينا</button>
   </header>
 
   <!-- القسم الرئيسي -->
@@ -807,38 +939,68 @@
     <div class="contact-container" data-aos="zoom-in">
       <p>هل لديك فكرة مشروع ترغب في تحويلها إلى واقع مذهل، أو تريد الانضمام إلى نخبة مطوري <strong>تيم السعودي</strong>؟ تواصل معنا عبر القنوات الرسمية وسنكون في خدمتك فوراً!</p>
       <div class="social-buttons">
-        <a href="https://discord.com" target="_blank" class="social-btn">
-          <i class="fa-brands fa-discord"></i> سيرفر الديسكورد
-        </a>
-        <a href="https://github.com/meesuo360-arch" target="_blank" class="social-btn">
-          <i class="fa-brands fa-github"></i> حساب GitHub
-        </a>
-        <a href="mailto:contact@alsaudi.team" class="social-btn">
-          <i class="fa-solid fa-envelope"></i> البريد الإلكتروني
-        </a>
+        <button onclick="openModal()" class="social-btn" style="cursor: pointer;">
+          <i class="fa-solid fa-paper-plane"></i> اختر منصة التواصل
+        </button>
       </div>
     </div>
   </section>
 
+  <!-- النافذة الانبثاقية الخاصة بـ "انضم إلينا" -->
+  <div class="modal-overlay" id="joinModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-box">
+      <button class="close-modal-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3>تواصل مع تيم السعودي</h3>
+      <p>اختر الوسيلة الأنسب لك وسيتم توجيهك مباشرةً:</p>
+      <div class="modal-options">
+        <a href="https://discord.com" target="_blank" class="modal-opt-btn discord">
+          <i class="fa-brands fa-discord"></i> سيرفر الديسكورد
+        </a>
+        <a href="https://wa.me/" target="_blank" class="modal-opt-btn whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> المحادثة المباشرة عبر الواتساب
+        </a>
+        <a href="mailto:contact@alsaudi.team" class="modal-opt-btn gmail">
+          <i class="fa-solid fa-envelope"></i> المراسلة عبر البريد الإلكتروني
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- التذييل -->
   <footer>
     <p>جميع الحقوق محفوظة لصالح <span>تيم السعودي</span> © 2026 | صُمم بكل إتقان واحترافية.</p>
   </footer>
 
-  <!-- مكتبة AOS للانيميشن عند التمرير -->
+  <!-- مكتبة AOS للانيميشن -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script>
-    // 1. تهيئة انيميشن AOS عند السكرول
+    // 1. تهيئة AOS
     AOS.init({ duration: 900, once: true });
 
-    // 2. هالة الماوس المضيئة Glow Tracker
+    // 2. إدارة فتح وإغلاق النافذة الانبثاقية (Modal)
+    function openModal() {
+      document.getElementById('joinModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('joinModal').classList.remove('active');
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    }
+
+    // 3. هالة الماوس المضيئة
     const cursor = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
 
-    // 3. كتابة تلقائية متحركة (Typewriter Effect)
+    // 4. كتابة تلقائية متحركة
     const words = ["تيم السعودي", "أنظمة الكافيهات الذكية", "بوتات ديسكورد مخصصة", "تطبيقات الجوال الاحترافية"];
     let wordIndex = 0, charIndex = 0, isDeleting = false;
     const typewriterEl = document.getElementById('typewriter');
@@ -862,7 +1024,7 @@
     }
     typeEffect();
 
-    // 4. عداد الإحصائيات المتحرك عند التمرير
+    // 5. عداد الإحصائيات
     const counters = document.querySelectorAll('.counter');
     let started = false;
 
@@ -889,7 +1051,7 @@
       }
     });
 
-    // 5. خلفية شبكية ثلاثية الأبعاد تفاعلية Interactive 3D Particles Canvas
+    // 6. خلفية الجسيمات المتحركة
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -948,7 +1110,7 @@
     }
     animateParticles();
 
-    // 6. تأثير الميلان 3D Tilt للخدمات عند الماوس
+    // 7. تأثير الميلان 3D Tilt للخدمات
     document.querySelectorAll('.service-box').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
