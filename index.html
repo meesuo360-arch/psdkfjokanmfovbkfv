@@ -24,9 +24,8 @@
       --border-color: #1e293b;
     }
 
-    /* تفعيل السناب السلس لضبط حركة السكاشن */
+    /* سكرول انسيابي حر بدون تقطيع بين السكاشن */
     html {
-      scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
     }
 
@@ -130,19 +129,12 @@
       transform: translateY(-2px);
     }
 
-    /* ضبط تثبيت كل سكشن (Scroll Snap Align) */
-    section, .hero, .stats-section {
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
+    /* تنسيق عام للسكاشن */
+    section {
       padding: 110px 8%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .stats-section {
-      min-height: auto;
       padding: 60px 8%;
       background-color: rgba(13, 19, 34, 0.7);
       backdrop-filter: blur(10px);
@@ -151,6 +143,10 @@
     }
 
     .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: radial-gradient(circle at center, rgba(21, 29, 48, 0.6) 0%, rgba(7, 9, 15, 0.95) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
     }
 
@@ -533,11 +529,12 @@
 
     .floating-contact:hover { transform: scale(1.15); }
 
-    /* قسم التواصل */
+    /* قسم التواصل مطابق للصورة تماماً */
     .contact-section {
       background-color: var(--bg-primary);
       border-top: 1px solid var(--border-color);
       text-align: center;
+      padding: 100px 8%;
     }
 
     .contact-container {
@@ -547,7 +544,7 @@
 
     .contact-container p {
       color: var(--text-muted);
-      margin-bottom: 35px;
+      margin-bottom: 40px;
       font-size: 16px;
       line-height: 1.8;
     }
@@ -582,7 +579,7 @@
       transform: translateY(-3px);
     }
 
-    /* تصميم النافذة الانبثاقية الاحترافية (Modal Popup) */
+    /* تصميم النافذة الانبثاقية الاحترافية (Modal Popup) لزر انضم إلينا */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -715,8 +712,6 @@
       text-align: center;
       color: var(--text-muted);
       font-size: 14px;
-      scroll-snap-align: end;
-      min-height: auto;
     }
 
     footer span {
@@ -728,7 +723,7 @@
       nav ul { display: none; }
       .hero h1 { font-size: 32px; }
       .about-grid { grid-template-columns: 1fr; }
-      section { padding: 80px 5%; min-height: auto; }
+      section { padding: 80px 5%; }
       .cursor-glow { display: none; }
     }
   </style>
@@ -741,8 +736,8 @@
   <!-- هالة الماوس المضيئة -->
   <div class="cursor-glow" id="cursorGlow"></div>
 
-  <!-- زر الواتساب العائم -->
-  <a href="https://wa.me/" target="_blank" class="floating-contact" title="تواصل معنا عبر واتساب">
+  <!-- زر الواتساب العائم متصل برقمك مباشرة -->
+  <a href="https://wa.me/201039375955" target="_blank" class="floating-contact" title="تواصل معنا عبر واتساب">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -933,20 +928,26 @@
     </div>
   </section>
 
-  <!-- قسم التواصل -->
+  <!-- قسم التواصل مطابق للصورة تماماً -->
   <section id="contact" class="contact-section">
-    <h2 class="section-title" data-aos="fade-up">تواصل معنا وانضم إلينا</h2>
     <div class="contact-container" data-aos="zoom-in">
+      <h2 class="section-title">تواصل معنا وانضم إلينا</h2>
       <p>هل لديك فكرة مشروع ترغب في تحويلها إلى واقع مذهل، أو تريد الانضمام إلى نخبة مطوري <strong>تيم السعودي</strong>؟ تواصل معنا عبر القنوات الرسمية وسنكون في خدمتك فوراً!</p>
       <div class="social-buttons">
-        <button onclick="openModal()" class="social-btn" style="cursor: pointer;">
-          <i class="fa-solid fa-paper-plane"></i> اختر منصة التواصل
-        </button>
+        <a href="https://discord.com" target="_blank" class="social-btn">
+          <i class="fa-brands fa-discord"></i> سيرفر الديسكورد
+        </a>
+        <a href="https://github.com/meesuo360-arch" target="_blank" class="social-btn">
+          <i class="fa-brands fa-github"></i> حساب GitHub
+        </a>
+        <a href="mailto:contact@alsaudi.team" class="social-btn">
+          <i class="fa-solid fa-envelope"></i> البريد الإلكتروني
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- النافذة الانبثاقية الخاصة بـ "انضم إلينا" -->
+  <!-- النافذة الانبثاقية الخاصة بـ "انضم إلينا" من الهيدر -->
   <div class="modal-overlay" id="joinModal" onclick="closeModalOnOverlay(event)">
     <div class="modal-box">
       <button class="close-modal-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -956,7 +957,7 @@
         <a href="https://discord.com" target="_blank" class="modal-opt-btn discord">
           <i class="fa-brands fa-discord"></i> سيرفر الديسكورد
         </a>
-        <a href="https://wa.me/" target="_blank" class="modal-opt-btn whatsapp">
+        <a href="https://wa.me/201039375955" target="_blank" class="modal-opt-btn whatsapp">
           <i class="fa-brands fa-whatsapp"></i> المحادثة المباشرة عبر الواتساب
         </a>
         <a href="mailto:contact@alsaudi.team" class="modal-opt-btn gmail">
