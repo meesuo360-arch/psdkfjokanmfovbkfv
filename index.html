@@ -68,7 +68,7 @@
       z-index: 9999;
     }
 
-    /* شريط التنقل العلوي */
+    /* شريط التنقل العلوي مع إضافة اللوجو */
     header {
       position: fixed;
       top: 0;
@@ -81,11 +81,33 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 6%;
+      padding: 14px 6%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .team-logo-img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 0 15px var(--accent-glow);
+      background-color: #ffffff;
+      padding: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover .team-logo-img {
+      transform: scale(1.08) rotate(5deg);
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--accent-color);
       text-transform: uppercase;
@@ -529,7 +551,7 @@
 
     .floating-contact:hover { transform: scale(1.15); }
 
-    /* قسم التواصل مطابق للصورة تماماً */
+    /* قسم التواصل */
     .contact-section {
       background-color: var(--bg-primary);
       border-top: 1px solid var(--border-color);
@@ -741,9 +763,12 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- الهيدر -->
+  <!-- الهيدر مع شعار التيم -->
   <header>
-    <div class="logo">تيم <span>السعودي</span></div>
+    <div class="logo-container">
+      <img src="logo.png" alt="شعار تيم السعودي" class="team-logo-img">
+      <div class="logo">تيم <span>السعودي</span></div>
+    </div>
     <nav>
       <ul>
         <li><a href="#home">الرئيسية</a></li>
@@ -928,7 +953,7 @@
     </div>
   </section>
 
-  <!-- قسم التواصل مطابق للصورة تماماً -->
+  <!-- قسم التواصل -->
   <section id="contact" class="contact-section">
     <div class="contact-container" data-aos="zoom-in">
       <h2 class="section-title">تواصل معنا وانضم إلينا</h2>
